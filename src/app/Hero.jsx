@@ -1,14 +1,7 @@
 'use client'
 import { Button, Typography, Card } from '@material-tailwind/react'
 
-// Import SVG logos
-import pinterestLogo from '/src/assets/logos/logo-pinterest.svg'
-import netflixLogo from '/src/assets/logos/logo-netflix.svg'
-import coinbaseLogo from '/src/assets/logos/logo-coinbase.svg'
-import googleLogo from '/src/assets/logos/logo-google.svg'
 import image8Svg from '/src/assets/image/image8.svg'
-import Contact from '../components/Contact'
-
 function Hero () {
   return (
     <div className='!flex h-[55vh] w-full items-center justify-between px-10'>
@@ -27,17 +20,16 @@ function Hero () {
               color='blue-gray'
               className='lg:text-5xl !leading-snug text-3xl lg:max-w-3xl'
             >
-              Unlock the Power of the Coaching  with Our Expert Courses
+              Unlock the Power of the Coaching with Our Expert Courses
             </Typography>
             <Typography variant='lead' className='mb-10 mt-6 !text-gray-900'>
-            It is a long established fact that a reader will be distracted by the readable content 
-            of a page when looking at its layout. The point of using Lorem Ipsum is that it has
-             a more-or-less normal distribution of letters, as opposed to using 'Content here, 
-             content here', making it look like readable English
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English
             </Typography>
-            <div className='mb-8 flex justify-center gap-4 lg:justify-start'>
-              <Button color='gray'>view all courses</Button>
-            </div>
+            <div className='mb-8 flex justify-center gap-4 lg:justify-start'></div>
             {/* <div className='grid grid-cols-2 lg:grid-cols-4 items-center justify-between gap-4 lg:justify-start'>
               <img
                 width={144}

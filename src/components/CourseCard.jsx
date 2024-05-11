@@ -28,14 +28,12 @@ function CourseCard ({ img, tag, title, desc, label }) {
             {tag}
           </Typography>
         </div>
-        <a
-          href='#'
-          className='text-blue-gray-900 transition-colors hover:text-gray-900'
+        <Typography
+          variant='h5'
+          className='mb-2 normal-case text-blue-gray-900'
         >
-          <Typography variant='h5' className='mb-2 normal-case'>
-            {title}
-          </Typography>
-        </a>
+          {title}
+        </Typography>
         <Typography className='mb-6 font-normal !text-gray-500'>
           {desc}
         </Typography>

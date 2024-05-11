@@ -14,23 +14,23 @@ const COURSES = [
   {
     img: blog4, // Replace image path with imported SVG
     tag: 'Beginner • 25 Classes • 200 Students',
-    title: 'Unlock the Web Foundation',
+    title: 'Mathematics',
     label: 'from $99',
-    desc: "Dive into HTML to structure your content and CSS to style it. By the end, you'll be crafting beautiful web pages from scratch."
+    desc: 'Our Mathematics course is designed to help you master the fundamentals of algebra, geometry, and calculus. Perfect for students and professionals alike.'
   },
   {
     img: blog3, // Replace image path with imported SVG
     tag: 'Medium • 10 Classes • 150 Students',
-    title: 'Craft Websites That Adapt',
+    title: 'English',
     label: 'from $199',
-    desc: 'Our Responsive Design course teaches you the art of creating websites that seamlessly adapt to different devices and screen sizes.'
+    desc: 'Our English course is perfect for non-native speakers looking to improve their language skills. Learn grammar, vocabulary, and pronunciation.'
   },
   {
     img: blog2, // Replace image path with imported SVG
     tag: 'Medium • 23 Classes • 590 Students',
-    title: 'Master the Power of React',
+    title: 'Science',
     label: 'from $499',
-    desc: 'Take your frontend development to the next level with our React Development course. Learn how to build interactive, dynamic web applications.'
+    desc: 'Our Science course covers a wide range of topics, including biology, chemistry, and physics. Perfect for students and professionals alike.'
   },
   {
     img: blog5, // Replace image path with imported SVG
@@ -45,7 +45,7 @@ const COURSES = [
     title: 'Streamline Your CSS Workflow',
     label: 'from $99',
     desc: 'Our Tailwind CSS Introduction course teaches you how to use this utility-first CSS framework to streamline your workflow, saving you time.'
-  },
+  }
   // {
   //   img: blog4, // Replace image path with imported SVG
   //   tag: 'Medium • 33 Classes • 690 Students',
