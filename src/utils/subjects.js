@@ -20,6 +20,6 @@ export const subjects = [
     {
         name: 'Computer Applications',
         description: 'Learn Computer Applications',
-        image: 'https://www.itm.ac.in/blog/images/careers-in-computer-applications-industry.webp'
+        image: 'https://www.attitudetallyacademy.com/Blog/wp-content/uploads/2020/07/dca.jpg'
     }
 ]

@@ -15,3 +15,5 @@ export const cloudinaryDisplayImage = 'https://res.cloudinary.com/dyy263lv5/imag
 
 
 export const courseImage = 'https://potentialconcept.in/images/courses/a159e783cd46503b3b8abdd9de9e59b7.webp'
+
+export const LOGO_IMG ='https://images.jdmagicbox.com/comp/guwahati/q6/9999px361.x361.191121003238.y5q6/catalogue/guidance-educare-guwahati-tutorials-0zir2qmiom.jpg'
