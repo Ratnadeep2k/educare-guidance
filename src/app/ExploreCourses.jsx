@@ -11,13 +11,13 @@ import blog5 from '/src/assets/image/blogs/blog5.svg'
 import blog6 from '/src/assets/image/blogs/blog6.svg'
 
 const COURSES = [
-  {
-    img: blog4, // Replace image path with imported SVG
-    tag: 'Beginner • 25 Classes • 200 Students',
-    title: 'Unlock the Web Foundation',
-    label: 'from $99',
-    desc: "Dive into HTML to structure your content and CSS to style it. By the end, you'll be crafting beautiful web pages from scratch."
-  },
+  // {
+  //   img: blog4, // Replace image path with imported SVG
+  //   tag: 'Beginner • 25 Classes • 200 Students',
+  //   title: 'Unlock the Web Foundation',
+  //   label: 'from $99',
+  //   desc: "Dive into HTML to structure your content and CSS to style it. By the end, you'll be crafting beautiful web pages from scratch."
+  // },
   {
     img: blog3, // Replace image path with imported SVG
     tag: 'Medium • 10 Classes • 150 Students',
@@ -46,13 +46,13 @@ const COURSES = [
     label: 'from $99',
     desc: 'Our Tailwind CSS Introduction course teaches you how to use this utility-first CSS framework to streamline your workflow, saving you time.'
   },
-  {
-    img: blog4, // Replace image path with imported SVG
-    tag: 'Medium • 33 Classes • 690 Students',
-    title: 'Master Backend Development',
-    label: 'from $299',
-    desc: 'Dream of becoming a backend developer? Our intensive one-month Node.js course is your fast track to achieving that goal.'
-  }
+  // {
+  //   img: blog4, // Replace image path with imported SVG
+  //   tag: 'Medium • 33 Classes • 690 Students',
+  //   title: 'Master Backend Development',
+  //   label: 'from $299',
+  //   desc: 'Dream of becoming a backend developer? Our intensive one-month Node.js course is your fast track to achieving that goal.'
+  // }
 ]
 
 export function ExploreCourses () {
