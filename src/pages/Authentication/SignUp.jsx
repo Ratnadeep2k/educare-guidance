@@ -5,6 +5,7 @@ import { auth } from '../../firebase/firebase'
 import app from '../../firebase/firebase'
 import { getDatabase, ref, set, child } from 'firebase/database'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { LOGO_IMG } from '../../utils/constants'
 
 function SignUp () {
   const {

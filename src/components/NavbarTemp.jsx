@@ -1,4 +1,5 @@
 import React from 'react'
+import { LOGO_IMG } from '../utils/constants'
 
 export default function NavbarTemp() {
   return (
@@ -6,7 +7,7 @@ export default function NavbarTemp() {
         <nav class="bg-white  dark:bg-gray-800">
   <div class="max-w-screen-xl flex  items-center justify-between mx-auto p-6 opacity-4">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        {/* <img src="" class="h-8" alt="Logo" /> */}
+        <img src= {LOGO_IMG} class="h-12" alt="Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GUIDANCE EDUCARE</span>
     </a>
     <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
