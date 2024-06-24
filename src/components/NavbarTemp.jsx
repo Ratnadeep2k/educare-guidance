@@ -1,43 +1,91 @@
 import React from 'react'
 import { LOGO_IMG } from '../utils/constants'
 
-export default function NavbarTemp() {
+export default function NavbarTemp () {
   return (
     <div>
-        <nav class="bg-white  dark:bg-gray-800">
-  <div class="max-w-screen-xl flex  items-center justify-between mx-auto p-6 opacity-4">
-    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src= {LOGO_IMG} class="h-12" alt="Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GUIDANCE EDUCARE</span>
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-    <div class="hidden md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse ">
-        <li>
-          <a href="/" class=" py-2 px-3 text-white rounded md:bg-transparent md:p-0 dark:text-white " aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="/About" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-        </li>
-        <li>
-          <a href="/admission" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Admission</a>
-        </li>
-        <li>
-          <a href="/Subjects" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Courses</a>
-        </li>
-        <li>
-          <a href="/login" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Sign In</a>
-        </li>
-      
-      </ul>
+      <nav className='bg-gray-800'>
+        <div className='max-w-screen-xl flex items-center justify-between mx-auto p-6'>
+          <a
+            href='/'
+            className='flex items-center space-x-3 rtl:space-x-reverse'
+          >
+            <img src={LOGO_IMG} className='h-12' alt='Logo' />
+            <span className='self-center text-2xl font-semibold whitespace-nowrap text-white'>
+              GUIDANCE EDUCARE
+            </span>
+          </a>
+          <button
+            data-collapse-toggle='navbar-default'
+            type='button'
+            className='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600'
+            aria-controls='navbar-default'
+            aria-expanded='false'
+          >
+            <span className='sr-only'>Open main menu</span>
+            <svg
+              className='w-5 h-5'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 17 14'
+            >
+              <path
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M1 1h15M1 7h15M1 13h15'
+              />
+            </svg>
+          </button>
+          <div className='hidden md:block md:w-auto' id='navbar-default'>
+            <ul className='font-medium flex flex-col p-4 md:p-0 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse'>
+              <li>
+                <a
+                  href='/'
+                  className='block py-2 px-3 text-white rounded md:bg-transparent md:p-0'
+                  aria-current='page'
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/About'
+                  className='block py-2 px-3 text-gray-400 rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0'
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/admission'
+                  className='block py-2 px-3 text-gray-400 rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0'
+                >
+                  Admission
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/Subjects'
+                  className='block py-2 px-3 text-gray-400 rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0'
+                >
+                  Courses
+                </a>
+              </li>
+              <li>
+                <a
+                  href='/login'
+                  className='block py-2 px-3 text-gray-400 rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0'
+                >
+                  Sign In
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-  </div>
-</nav>
-</div>
   )
 }

@@ -1,4 +1,3 @@
-
 import Footer from './components/Footer'
 import Body from './pages/Body'
 import Contact from './components/Contact'
@@ -9,21 +8,88 @@ import Admission from './components/Admission'
 import LoginTemp from './pages/Authentication/LoginTemp'
 import NavbarTemp from './components/NavbarTemp'
 import About from './components/About'
+import AdminDashboard from './pages/Dashboard/AdminDashboard'
+import RegularLayout from './layout/UserLayout'
+import AdminLayout from './layout/AdminLayout'
+import UsersTable from './components/Tables/UsersTable'
 function App () {
   return (
     <>
       <Router>
-        <NavbarTemp />
         <Routes>
-          <Route path='/' element={<Body />} />
-          <Route path='/admission' element={<Admission/>} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/subjects' element={<Subjects />} />
-          <Route path='/register' element={<SignUpTemp/>} />
-          <Route path='/login' element={<LoginTemp />} />
-          <Route path='/about' element={<About/>}/>
+          <Route
+            path='/'
+            element={
+              <RegularLayout>
+                <Body />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/admission'
+            element={
+              <RegularLayout>
+                <Admission />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/contact'
+            element={
+              <RegularLayout>
+                <Contact />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/subjects'
+            element={
+              <RegularLayout>
+                <Subjects />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/register'
+            element={
+              <RegularLayout>
+                <SignUpTemp />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/login'
+            element={
+              <RegularLayout>
+                <LoginTemp />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/about'
+            element={
+              <RegularLayout>
+                <About />
+              </RegularLayout>
+            }
+          />
+          <Route
+            path='/admin/dashboard'
+            element={
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
+            }
+          />
+          <Route
+            path='/admin/users'
+            element={
+              <AdminLayout>
+                <UsersTable />
+              </AdminLayout>
+            }
+          />
         </Routes>
-        <Footer />
       </Router>
     </>
   )
