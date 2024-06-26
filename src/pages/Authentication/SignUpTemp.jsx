@@ -18,7 +18,7 @@ function SignUpTemp () {
   const [submitError, setSubmitError] = useState(null)
 
   const onSubmit = async data => {
-    const { email, password } = data
+    const { name, email, phone, password } = data
     try {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -26,7 +26,7 @@ function SignUpTemp () {
         password
       )
       const user = userCredentials.user
-      writeUserData(user.uid, email, password)
+      writeUserData(user.uid, name, email, phone, password, 'student')
       console.log('User signed up:', user)
     } catch (error) {
       console.error('Error submitting form', error.message)
@@ -34,12 +34,15 @@ function SignUpTemp () {
     }
   }
 
-  function writeUserData (userId, email, password) {
+  function writeUserData (userId, name, email, phone, password, role) {
     const db = getDatabase(app)
     const usersRef = ref(db, 'users')
     set(child(usersRef, userId), {
+      name: name,
       email: email,
-      password: password
+      phone: phone,
+      password: password,
+      role: role
     })
       .then(() => {
         console.log('Data saved successfully')
@@ -50,13 +53,9 @@ function SignUpTemp () {
   }
   return (
     <section className='bg-gray-50 dark:bg-gray-300 mb-10'>
-      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ' >
+      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 '>
         <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-gray-900 '>
-          <img
-            className='w-12 h-12 mr-2 mt-8'
-            src={LOGO_IMG}
-            alt='logo'
-          />
+          <img className='w-12 h-12 mr-2 mt-8' src={LOGO_IMG} alt='logo' />
           <h1 className='mt-10 text-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
         </div>
         <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
@@ -121,6 +120,35 @@ function SignUpTemp () {
                   <p className='text-red-500 text-sm mt-1'>Email is required</p>
                 )}
               </div>
+
+              <div>
+                <label
+                  htmlFor='phone'
+                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+                >
+                  Phone
+                </label>
+                <input
+                  {...register('phone', {
+                    required: true,
+                    pattern: {
+                      value: /^\d{10}$/,
+                      message: 'Invalid phone number'
+                    }
+                  })}
+                  type='tel'
+                  name='phone'
+                  id='phone'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                  placeholder='Enter email address'
+                />
+                {errors.phone && (
+                  <p className='text-red-500 text-sm mt-1'>
+                    {errors.phone.message}
+                  </p>
+                )}
+              </div>
+
               <div>
                 <label
                   htmlFor='password'

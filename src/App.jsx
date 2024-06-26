@@ -11,7 +11,7 @@ import About from './components/About'
 import AdminDashboard from './pages/Dashboard/AdminDashboard'
 import RegularLayout from './layout/UserLayout'
 import AdminLayout from './layout/AdminLayout'
-import UsersTable from './components/Tables/UsersTable'
+import Users from './pages/Users/Users'
 function App () {
   return (
     <>
@@ -85,7 +85,7 @@ function App () {
             path='/admin/users'
             element={
               <AdminLayout>
-                <UsersTable />
+                <Users />
               </AdminLayout>
             }
           />
