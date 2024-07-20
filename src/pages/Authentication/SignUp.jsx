@@ -48,7 +48,7 @@ function SignUp () {
       })
   }
   return (
-    <div className='xl:flex xl:justify-center'>
+    <div className='xl:flex xl:justify-center '>
       <div className='xl:w-1/2 mx-4 my-2 px-4 py-2'>
         <div className='rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark'>
           <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
@@ -56,7 +56,7 @@ function SignUp () {
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-4'>
-                <label className='mb-2.5 block font-medium text-black dark:text-white'>
+                <label className='mb-2.5 block font-medium text-black '>
                   Full name
                 </label>
                 <div className='relative'>

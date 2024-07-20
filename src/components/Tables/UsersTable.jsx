@@ -77,7 +77,6 @@ const UsersTable = () => {
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         rowsPerPageOptions={[rowsPerPage]} */}
-      />
     </div>
   )
 }
