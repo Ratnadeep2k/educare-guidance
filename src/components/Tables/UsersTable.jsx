@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { getDatabase } from 'firebase/database'
-import { auth } from '../../firebase/firebase'
-import { onAuthStateChanged } from 'firebase/auth'
 import {
   Table,
   TableBody,
@@ -13,6 +10,8 @@ import {
   TablePagination
 } from '@mui/material'
 import { styled } from '@mui/system'
+import { Edit, Delete } from '@mui/icons-material'
+import { readUserdata } from '../../firebase/utils/readUserData'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontWeight: 'bold'
@@ -20,64 +19,60 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const UsersTable = () => {
   const [data, setData] = useState([])
-  const database = getDatabase()
+  const [page, setPage] = useState(0)
+  const rowsPerPage = 5
 
-  async function fetchData() {
-    try {
-      const user = auth.currentUser
-      if (user) {
-        const userId = user.uid
-        const dbRef = database.ref('users/' + userId + '/students')
-        dbRef.on('value', snapshot => {
-          const students = snapshot.val()
-          const studentList = []
-          for (let id in students) {
-            studentList.push(students[id])
-          }
-          setData(studentList)
-        })
-      }
-    } catch (error) {
-      console.error(error)
-    }
+  const fetchData = async () => {
+    const userData = await readUserdata()
+    setData(userData)
   }
+
   useEffect(() => {
     fetchData()
-    console.log('fetching data', data)
   }, [])
-
-  const rowsPerPage = 1
-
-  const pageCount = Math.ceil(data.length / rowsPerPage)
-
-  const [page, setPage] = useState(0)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
   }
 
   return (
-    <div>
+    <>
       <h2>Students Information</h2>
-      {/* {data
-        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-        .map((data, index) => (
-          <UserTable
-            key={index}
-            data={data}
-            fetchData={fetchData}
-            page={page}
-            setPage={setPage}
-          />
-        ))}
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Name</StyledTableCell>
+              <StyledTableCell>Email</StyledTableCell>
+              <StyledTableCell>Phone</StyledTableCell>
+              <StyledTableCell>Role</StyledTableCell>
+              <StyledTableCell>Actions</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((user, index) => (
+                <TableRow key={index}>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.phone}</TableCell>
+                  <TableCell>{user.role}</TableCell>
+                  <TableCell>
+                    <Edit className='cursor-pointer' />
+                    <Delete className='cursor-pointer' />
+                  </TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <TablePagination
         component='div'
         count={data.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[rowsPerPage]} */}
-    </div>
   )
 }
 
