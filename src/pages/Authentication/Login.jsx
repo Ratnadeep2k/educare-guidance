@@ -46,12 +46,12 @@ function Login () {
   return (
     <div className='xl:flex xl:justify-center'>
       <div className='xl:w-1/2 mx-4 my-2 px-4 py-2'>
-        <div className='rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark'>
+        <div className='rounded-sm border border-stroke bg-white shadow-default '>
           <div className='w-full p-4 sm:p-12.5 xl:p-17.5'>
             <h1 className='text-center font-bold text-2xl'>Login</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-4'>
-                <label className='mb-2.5 block font-medium text-black dark:text-white'>
+                <label className='mb-2.5 block font-medium text-black '>
                   Email
                 </label>
                 <div className='relative'>
@@ -95,7 +95,7 @@ function Login () {
               </div>
 
               <div className='mb-4'>
-                <label className='mb-2.5 block font-medium text-black dark:text-white'>
+                <label className='mb-2.5 block font-medium text-black '>
                   Password
                 </label>
                 <div className='relative'>
@@ -154,7 +154,7 @@ function Login () {
                 {submitError && <p className='text-red-500'>{submitError}</p>}
               </div>
 
-              <button className='flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50'>
+              <button className='flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-darkopacity-50 :border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50'>
                 <span>
                   <svg
                     width='20'

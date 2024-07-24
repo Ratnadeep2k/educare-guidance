@@ -1,10 +1,16 @@
 import React from 'react'
 import { LOGO_IMG } from '../utils/constants'
+import { useState } from 'react'
 
 export default function NavbarTemp () {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen)
+  }
   return (
     <div>
-      <nav className='bg-gray-800'>
+      <nav className='bg-blue-300 dark:text-white'>
         <div className='max-w-screen-xl flex items-center justify-between mx-auto p-6'>
           <a
             href='/'
@@ -21,6 +27,7 @@ export default function NavbarTemp () {
             className='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600'
             aria-controls='navbar-default'
             aria-expanded='false'
+            onClick={toggleNavbar}
           >
             <span className='sr-only'>Open main menu</span>
             <svg
@@ -87,5 +94,6 @@ export default function NavbarTemp () {
         </div>
       </nav>
     </div>
+    
   )
 }

@@ -52,13 +52,9 @@ function SignUpTemp () {
       })
   }
   return (
-    <section className='bg-gray-50 dark:bg-gray-300 mb-10'>
-      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 '>
-        <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-gray-900 '>
-          <img className='w-12 h-12 mr-2 mt-8' src={LOGO_IMG} alt='logo' />
           <h1 className='mt-10 text-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
         </div>
-        <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
+        <div className='w-full dark:bg-yellow-500 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 text-black'>
           <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
             <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
               Create Account

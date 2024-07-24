@@ -2,18 +2,18 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className='bg-white dark:bg-gray-800'>
+    <footer className='bg-white dark:bg-blue-400 dark:text-white'>
       <div className='mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8'>
         <div className='md:flex md:justify-between'>
           <div className='mb-6 md:mb-0'>
             <a href='https://flowbite.com/' className='flex items-center'>
               <img
-                src='https://flowbite.com/docs/images/logo.svg'
+                src='https://images.jdmagicbox.com/comp/guwahati/q6/9999px361.x361.191121003238.y5q6/catalogue/guidance-educare-guwahati-tutorials-0zir2qmiom.jpg'
                 className='h-8 me-3'
-                alt='FlowBite Logo'
+                alt='educare Logo'
               />
               <span className='self-center text-2xl font-semibold whitespace-nowrap dark:text-white'>
-                Contact us
+                Educare Guidance
               </span>
             </a>
           </div>
