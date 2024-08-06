@@ -52,8 +52,8 @@ function SignUpTemp () {
       })
   }
   return (
-          <h1 className='mt-10 text-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
-        </div>
+    <div className='ml-100 mb-8'>
+        <h1 className='mt-10 text-xl font-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
         <div className='w-full dark:bg-yellow-500 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 text-black'>
           <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
             <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
@@ -226,7 +226,6 @@ function SignUpTemp () {
           </div>
         </div>
       </div>
-    </section>
   )
 }
 
