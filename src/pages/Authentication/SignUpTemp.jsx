@@ -52,7 +52,7 @@ function SignUpTemp () {
       })
   }
   return (
-    <div className='flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0 mt-5 mb-14'>
+    <div className='flex flex-col items-center justify-center px-4 py-4 mx-auto md:h-screen lg:py-0 mt-5 mb-18'>
         <h1 className='mt-10 text-xl font-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
         <div className='w-full bg-gray-500 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 text-black'>
           <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
