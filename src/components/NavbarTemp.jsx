@@ -8,9 +8,9 @@ export default function NavbarTemp () {
   const toggleNavbar = () => {
     setIsOpen(!isOpen)
   }
-  return (
+  return ( 
     <div>
-      <nav className='bg-blue-300 dark:text-white'>
+      <nav className='bg-gray-800  border-gray-200  dark:text-white'>
         <div className='max-w-screen-xl flex items-center justify-between mx-auto p-6'>
           <a
             href='/'
@@ -92,6 +92,7 @@ export default function NavbarTemp () {
             </ul>
           </div>
         </div>
+        
       </nav>
     </div>
     
