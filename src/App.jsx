@@ -12,6 +12,7 @@ import AdminDashboard from './pages/Dashboard/AdminDashboard'
 import RegularLayout from './layout/UserLayout'
 import AdminLayout from './layout/AdminLayout'
 import Users from './pages/Users/Users'
+import Guidance from './components/Guidance'
 function App () {
   return (
     <>
@@ -54,6 +55,14 @@ function App () {
             element={
               <RegularLayout>
                 <SignUpTemp />
+              </RegularLayout>
+            }
+          />
+            <Route
+            path='/gia'
+            element={
+              <RegularLayout>
+                <Guidance/>
               </RegularLayout>
             }
           />
