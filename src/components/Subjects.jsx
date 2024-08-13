@@ -5,7 +5,6 @@ const Subjects = () => {
 
     const commonSubjects = [
         { name: 'English', image: 'https://via.placeholder.com/100' },
-        { name: 'Mathematics', image: 'https://via.placeholder.com/100' },
         { name: 'MIL', image: 'https://via.placeholder.com/100' }
     ];
 
@@ -13,6 +12,7 @@ const Subjects = () => {
         science: [
             { name: 'Physics', image: 'https://via.placeholder.com/100' },
             { name: 'Chemistry', image: 'https://via.placeholder.com/100' },
+            { name: 'Mathematics', image: 'https://via.placeholder.com/100' },
             { name: 'Biology', image: 'https://via.placeholder.com/100' }
         ],
         arts: [
