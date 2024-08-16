@@ -1,0 +1,3 @@
+- added versel.json for routes
+- login/signup completed
+- landing page added
