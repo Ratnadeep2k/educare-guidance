@@ -1,236 +1,144 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import { auth } from '../../firebase/firebase'
-import app from '../../firebase/firebase'
-import { getDatabase, ref, set, child } from 'firebase/database'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { LOGO_IMG } from '../../utils/constants'
 
 function SignUpTemp () {
   const {
     register,
     handleSubmit,
-    getValues,
-    formState: { errors }
+    formState: { errors },
+    watch
   } = useForm()
 
-  const [submitError, setSubmitError] = useState(null)
-
-  const onSubmit = async data => {
-    const { name, email, phone, password } = data
-    try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      const user = userCredentials.user
-      writeUserData(user.uid, name, email, phone, password, 'student')
-      console.log('User signed up:', user)
-    } catch (error) {
-      console.error('Error submitting form', error.message)
-      setSubmitError('Error submitting form, Please try again later')
-    }
+  const onSubmit = data => {
+    console.log('Form Submitted Successfully', data)
   }
 
-  function writeUserData (userId, name, email, phone, password, role) {
-    const db = getDatabase(app)
-    const usersRef = ref(db, 'users')
-    set(child(usersRef, userId), {
-      name: name,
-      email: email,
-      phone: phone,
-      password: password,
-      role: role
-    })
-      .then(() => {
-        console.log('Data saved successfully')
-      })
-      .catch(error => {
-        console.error('Error saving data: ', error)
-      })
-  }
+  const password = watch('password', '')
+
   return (
-    <section className='bg-gray-50 dark:bg-gray-300 mb-10'>
-      <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 '>
-        <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-gray-900 '>
-          <img className='w-12 h-12 mr-2 mt-8' src={LOGO_IMG} alt='logo' />
-          <h1 className='mt-10 text-bold text-yellow-500'>GUIDANCE EDUCARE</h1>
-        </div>
-        <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
-          <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
-            <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
-              Create Account
-            </h1>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className='space-y-4 md:space-y-6'
-            >
-              <div>
-                <label
-                  htmlFor='name'
-                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >
-                  Full Name
-                </label>
-                <input
-                  {...register('name', {
-                    required: true,
-                    message: 'Name is required',
-                    pattern: {
-                      value: /^[a-zA-Z\s]*$/,
-                      message: 'Name can only contain letters'
-                    }
-                  })}
-                  type='name'
-                  name='name'
-                  id='name'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  placeholder='Enter full name'
-                />
-                {errors.name && (
-                  <p className='text-red-500 text-sm mt-1'>
-                    {errors.name.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label
-                  htmlFor='email'
-                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >
-                  Email
-                </label>
-                <input
-                  {...register('email', {
-                    required: true,
-                    pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                      message: 'Invalid email address'
-                    }
-                  })}
-                  type='email'
-                  name='email'
-                  id='email'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  placeholder='Enter email address'
-                />
-                {errors.email && (
-                  <p className='text-red-500 text-sm mt-1'>Email is required</p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor='phone'
-                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >
-                  Phone
-                </label>
-                <input
-                  {...register('phone', {
-                    required: true,
-                    pattern: {
-                      value: /^\d{10}$/,
-                      message: 'Invalid phone number'
-                    }
-                  })}
-                  type='tel'
-                  name='phone'
-                  id='phone'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                  placeholder='Enter email address'
-                />
-                {errors.phone && (
-                  <p className='text-red-500 text-sm mt-1'>
-                    {errors.phone.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor='password'
-                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >
-                  Password
-                </label>
-                <input
-                  {...register('password', {
-                    required: true,
-                    minLength: {
-                      value: 6,
-                      message: 'Password must be at least 6 characters'
-                    },
-                    maxLength: {
-                      value: 20,
-                      message: 'Password must not exceed 20 characters'
-                    }
-                  })}
-                  type='password'
-                  name='password'
-                  id='password'
-                  placeholder='Enter password'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                />
-                {errors.password && (
-                  <p className='text-red-500 text-sm mt-1'>
-                    {errors.password.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor='password'
-                  className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >
-                  Re-type Password
-                </label>
-                <input
-                  {...register('retypePassword', {
-                    required: true,
-                    validate: {
-                      matchesPassword: value => {
-                        const { password } = getValues()
-                        return password === value || 'Passwords does not match'
-                      }
-                    },
-                    message: 'Password does not match'
-                  })}
-                  type='password'
-                  placeholder='Re-enter password'
-                  className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                />
-                {errors.retypePassword && (
-                  <p className='text-red-500 text-sm mt-1'>
-                    {errors.retypePassword.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <button
-                  type='submit'
-                  className='w-full text-white bg-primary-600 border focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  dark:focus:ring-primary-800'
-                >
-                  Create an Account
-                </button>
-                {submitError && <p className='text-red-500'>{submitError}</p>}
-              </div>
-              <p className='text-sm font-light text-gray-500 dark:text-gray-400'>
-                Already Have an Account?{' '}
-                <Link to='/login'>
-                  <span className='font-medium text-primary-600 hover:underline dark:text-primary-500 cursor-pointer'>
-                    Sign In
-                  </span>
-                </Link>
-              </p>
-            </form>
+    <div
+      className='min-h-screen flex flex-col items-center justify-center bg-cover bg-no-repeat bg-center'
+      style={{
+        backgroundImage:
+          'url(https://mdbootstrap.com/img/new/textures/full/171.jpg)'
+      }}
+    >
+      <div className='w-full max-w-2xl p-8 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-lg mt-10'>
+        <h2 className='text-3xl font-bold text-gray-600 text-center mb-8'>
+          Create an account
+        </h2>
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
+          <div className='flex flex-col items-center'>
+            <input
+              type='text'
+              placeholder='Enter First Name'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('firstName', {
+                required: 'First name is required'
+              })}
+            />
+            {errors.firstName && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.firstName.message}
+              </span>
+            )}
           </div>
-        </div>
+
+          <div className='flex flex-col items-center'>
+            <input
+              type='text'
+              placeholder='Enter Last Name'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('lastName', {
+                required: 'Last name is required'
+              })}
+            />
+            {errors.lastName && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.lastName.message}
+              </span>
+            )}
+          </div>
+
+          <div className='flex flex-col items-center'>
+            <input
+              type='email'
+              placeholder='Email'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: 'Please enter a valid email address'
+                }
+              })}
+            />
+            {errors.email && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.email.message}
+              </span>
+            )}
+          </div>
+
+          <div className='flex flex-col items-center'>
+            <input
+              type='password'
+              placeholder='Password'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('password', {
+                required: 'Password is required',
+                minLength: {
+                  value: 6,
+                  message: 'Password must be at least 6 characters long'
+                }
+              })}
+            />
+            {errors.password && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.password.message}
+              </span>
+            )}
+          </div>
+
+          <div className='flex flex-col items-center'>
+            <input
+              type='password'
+              placeholder='Re-enter Password'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('confirmPassword', {
+                required: 'Please confirm your password',
+                validate: value =>
+                  value === password || 'Passwords do not match'
+              })}
+            />
+            {errors.confirmPassword && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.confirmPassword.message}
+              </span>
+            )}
+          </div>
+
+          <div className='flex justify-center'>
+            <button
+              type='submit'
+              className='w-1/2 py-3 mt-4 bg-blue-600 text-white rounded-full transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500'
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+
+        <p className='text-center text-gray-700 mt-6'>
+          Already have an account?{' '}
+          <a
+            href='/login'
+            className='text-blue-500 hover:text-blue-600 underline'
+          >
+            Sign in
+          </a>
+        </p>
       </div>
-    </section>
+    </div>
   )
 }
 
