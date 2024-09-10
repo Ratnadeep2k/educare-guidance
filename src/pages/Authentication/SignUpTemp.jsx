@@ -1,7 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
+import axios from 'axios'
+import { useContext } from 'react'
+import AuthContext from '../../components/context/authContext'
 function SignUpTemp () {
+  const { isAuthenticated } = useContext(AuthContext)
+
   const {
     register,
     handleSubmit,
@@ -9,8 +13,22 @@ function SignUpTemp () {
     watch
   } = useForm()
 
-  const onSubmit = data => {
-    console.log('Form Submitted Successfully', data)
+  const onSubmit = async data => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        data
+      )
+      const token = response.data.token
+      localStorage.setItem('token', token)
+      if (response.status === 201) {
+        isAuthenticated(true)
+      } else {
+        isAuthenticated(false)
+      }
+    } catch (error) {
+      console.error('Error submitting form', error.message)
+    }
   }
 
   const password = watch('password', '')
@@ -31,31 +49,15 @@ function SignUpTemp () {
           <div className='flex flex-col items-center'>
             <input
               type='text'
-              placeholder='Enter First Name'
+              placeholder='Enter Your Name'
               className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
-              {...register('firstName', {
-                required: 'First name is required'
+              {...register('name', {
+                required: 'Name is required'
               })}
             />
-            {errors.firstName && (
+            {errors.name && (
               <span className='text-red-500 text-sm mt-2'>
-                {errors.firstName.message}
-              </span>
-            )}
-          </div>
-
-          <div className='flex flex-col items-center'>
-            <input
-              type='text'
-              placeholder='Enter Last Name'
-              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
-              {...register('lastName', {
-                required: 'Last name is required'
-              })}
-            />
-            {errors.lastName && (
-              <span className='text-red-500 text-sm mt-2'>
-                {errors.lastName.message}
+                {errors.name.message}
               </span>
             )}
           </div>
@@ -82,6 +84,26 @@ function SignUpTemp () {
 
           <div className='flex flex-col items-center'>
             <input
+              type='text'
+              placeholder='Phone'
+              className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
+              {...register('phone', {
+                required: 'Phone number is required',
+                pattern: {
+                  value: /^[0-9]{10}$/,
+                  message: 'Please enter a valid 10-digit phone number'
+                }
+              })}
+            />
+            {errors.phone && (
+              <span className='text-red-500 text-sm mt-2'>
+                {errors.phone.message}
+              </span>
+            )}
+          </div>
+
+          <div className='flex flex-col items-center'>
+            <input
               type='password'
               placeholder='Password'
               className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
@@ -101,19 +123,22 @@ function SignUpTemp () {
           </div>
 
           <div className='flex flex-col items-center'>
-            <input
-              type='password'
-              placeholder='Re-enter Password'
+            <select
               className='w-3/4 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center'
-              {...register('confirmPassword', {
-                required: 'Please confirm your password',
-                validate: value =>
-                  value === password || 'Passwords do not match'
+              {...register('stream', {
+                required: 'Stream is required'
               })}
-            />
-            {errors.confirmPassword && (
+            >
+              <option value='' disabled selected>
+                Select Stream
+              </option>
+              <option value='Science'>Science</option>
+              <option value='Commerce'>Commerce</option>
+              <option value='Arts'>Arts</option>
+            </select>
+            {errors.stream && (
               <span className='text-red-500 text-sm mt-2'>
-                {errors.confirmPassword.message}
+                {errors.stream.message}
               </span>
             )}
           </div>
